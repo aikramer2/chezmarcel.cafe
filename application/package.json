@@ -1,0 +1,24 @@
+{
+  "name": "kiras-photo-album",
+  "version": "1.0.0",
+  "description": "A place built for Kira where she can explore all the magic in her life.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.155.0",
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-photo-gallery": "^1.0.9",
+    "highlight.js": "^9.12.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
