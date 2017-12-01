@@ -158,7 +158,7 @@ app.get("/population_section/:section", function(request, response){
 
 app.get("/video/:file", function(req, res){
   let vid_name = req.params.file
-  const mypath = path.join(__dirname, 'public','photos','all-photos',vid_name)
+   const mypath = path.join(__dirname, 'public','photos','all-photos',vid_name)
     const stat = fs.statSync(mypath)
     const fileSize = stat.size
     const range = req.headers.range
