@@ -15,6 +15,7 @@ db_url=<url>
 
 
 # heroku
+heroku config:set db_url=<URL>
 download heroku cli
 heroku login
 heroku create
