@@ -12,6 +12,7 @@ const fs = require('fs');
 // Init App
 const app = express()
 
+const s3_prefix = "https://s3-us-west-1.amazonaws.com/my-data-repo/photos/"
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs'); // pug
@@ -87,13 +88,13 @@ let db_promise = MongoClient.connect(mongo_uri)
 function build_member_light_gallery_entry(photo_entry){
   if (photo_entry["type"]==="image") {
     return {
-      "src": "static/photos/all-photos/" + photo_entry["image_id"],
-      "thumb":"static/photos/all-photos/" + photo_entry["image_id"],
+      "src": s3_prefix + photo_entry["image_id"],
+      "thumb": s3_prefix + photo_entry["image_id"],
       "subHtml": photo_entry["caption"]}
     } else {
       return {
         "thumb": "static/img/video-play.png",
-        "html": '<video class="lg-video-object lg-html5" controls preload="none"><source src="video/'+photo_entry["image_id"]+'" type="video/mp4">Your browser does not support HTML5 video</video>',
+        "html": '<video class="lg-video-object lg-html5" controls preload="none"><source src="'+s3_prefix + photo_entry["image_id"]+'" type="video/mp4">Your browser does not support HTML5 video</video>',
         "subHtml": photo_entry["caption"]}
       }
     }
