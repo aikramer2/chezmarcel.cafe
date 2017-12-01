@@ -130,14 +130,14 @@ section a span {
 <% for(var i=0; i<photos.length; i++) { %>
   <%if (i == 0) { %>
 
-  <section id="welcome" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/img-50.jpg) center center / cover no-repeat;">
+  <section id="welcome" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/img-50.jpg) center center / cover no-repeat;">
     <h1>Welcome to Chez Marcel.</h1>
     <h3>(Happy Birthday Kira)</h3>
     <a id="link-<%= photos[0].section %>"><span></span>Scroll</a>
   </section>
   <% } %>
 
-  <section id="<%= photos[i].section %>" class="section" style="background: url(<%= photos[i].img_src %>) center center / cover no-repeat;">
+  <section id="<%= photos[i].section %>" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[i].img_src %>) center center / cover no-repeat;">
     <h1><%= photos[i].section %></h1>
     <!-- <a><span></span></a> -->
     <%if (i+1 === photos.length) { %>
