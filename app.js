@@ -12,7 +12,6 @@ const fs = require('fs');
 // Init App
 const app = express()
 
-const s3_prefix = "https://s3-us-west-1.amazonaws.com/my-data-repo/photos/"
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs'); // pug
@@ -84,6 +83,7 @@ let db_promise = MongoClient.connect(mongo_uri)
 //   })
 // })
 
+const s3_prefix = "https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/"
 
 function build_member_light_gallery_entry(photo_entry){
   if (photo_entry["type"]==="image") {
