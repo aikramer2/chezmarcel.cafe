@@ -1,5 +1,5 @@
 projectpath=~/Code/personal-projects/kiras-photo-project
-docker run --privileged -t -i -p 8889:8889 \
+docker run --privileged -t -i -p 5000:5000 -p 8889:8889 \
   -v $projectpath/.aws:/home/aaron/.aws \
   -v $projectpath/.mongo:/home/aaron/.mongo \
   -v $projectpath/application:/home/aaron/application \

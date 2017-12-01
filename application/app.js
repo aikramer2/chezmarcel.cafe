@@ -92,7 +92,7 @@ function build_member_light_gallery_entry(photo_entry){
       "subHtml": photo_entry["caption"]}
     } else {
       return {
-        "thumb": "https://blog.majestic.com/wp-content/uploads/2010/10/Video-Icon-crop.png",
+        "thumb": "static/img/video-play.png",
         "html": '<video class="lg-video-object lg-html5" controls preload="none"><source src="video/'+photo_entry["image_id"]+'" type="video/mp4">Your browser does not support HTML5 video</video>',
         "subHtml": photo_entry["caption"]}
       }
