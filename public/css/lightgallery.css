@@ -162,7 +162,7 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.45);
 }
-.lg-toolbar .lg-icon {
+.lg-toolbar .lg-icon{
   color: #999;
   cursor: pointer;
   float: right;
@@ -1092,6 +1092,9 @@ body{
 }
 .home .demo-gallery {
   padding-bottom: 80px;
+}
+.lg-outer #lg-share-email .lg-icon:after {
+  content: "\f003";
 }
 
 /*# sourceMappingURL=lightgallery.css.map */
