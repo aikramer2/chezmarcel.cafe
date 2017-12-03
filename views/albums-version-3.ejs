@@ -157,7 +157,7 @@ section a span {
 <script>
 let anchors = []
 <% for (i=0; i< photos.length; i++) { %>
-  anchors.push(encodeURIComponent('<%= photos[i].section %>'))
+  anchors.push('<%= photos[i].section %>')
 <% } %>
 $(document).ready(function() {
 	$('#fullpage').fullpage({
@@ -167,7 +167,7 @@ $(document).ready(function() {
     anchors: anchors,
 		navigation: true,
 		navigationPosition: 'right',
-		navigationTooltips: ['firstSlide', 'secondSlide'],
+		navigationTooltips: anchors,
 		showActiveTooltip: false,
 		slidesNavigation: false,
 		slidesNavPosition: 'bottom',
