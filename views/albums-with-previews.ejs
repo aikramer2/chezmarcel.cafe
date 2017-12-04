@@ -1,0 +1,347 @@
+<html xmlns="https://www.w3.org/1999/xhtml" >
+<head>
+  <title>Chez Marcel</title>
+  <link rel="icon" href="static/photos/all-photos/img-765.jpg">
+  <link type="text/css" rel="stylesheet" href="static/css/lightgallery.css" />
+  <link type="text/css" rel="stylesheet" href="static/css/icons.css" />
+</head>
+
+<body>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+
+section h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font : normal 300 64px/1 'Josefin Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+section h3 {
+  position: absolute;
+  top: 95%;
+  left: 85%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #df80ff ;
+  font : normal 300 30px/1 'Josefin Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 300
+}
+
+section .scroll-teaser {
+  padding-top: 60px;
+  border-radius: 5px;
+}
+section .scroll-teaser span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+  box-sizing: border-box;
+}
+
+section .nav-toggler span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+@keyframes sdb04 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+.nav-toggler{
+  position: absolute;
+  bottom: 79%;
+  left: 95%;
+}
+.section .scroll-teaser {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.section nav-toggler {
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.demo .scroll-teaser:hover {
+  opacity: .5;
+}
+
+.demo .nav-toggler:hover {
+  opacity: .5;
+}
+
+.prev-link {
+
+  height: 80px;
+  width: 100px;
+
+}
+
+.prev-link img{
+  border-radius: 5px;
+  cursor: pointer;
+  float: left;
+  overflow: hidden;
+  height: 100%;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="static/css/jquery.fullpage.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+<script src="static/js/jquery.easings.min.js"></script>
+
+
+<!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
+<script type="text/javascript" src="static/js/scrolloverflow.min.js"></script>
+
+<script type="text/javascript" src="static/js/jquery.fullpage.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script> -->
+  <!-- <script src="static/js/lightgallery.min.js"></script> -->
+  <!-- <script src="static/js/lg-video.min.js"></script> -->
+  <script src="static/js/lightgallery.js"></script>
+  <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+  <!-- <script src="static/js/lightgallery-all.min.js"></script> -->
+  <script src="static/js/lg-thumbnail.js"></script>
+  <script src="static/js/lg-fullscreen.js"></script>
+  <script src="static/js/lg-video.js"></script>
+  <script src="static/js/lg-share.js"></script>
+  <script>
+
+    toggle_nav = function(){
+      var navbar = document.getElementById('fp-nav');
+      if (navbar.style.visibility == "hidden"){
+        navbar.style.visibility = ""
+      } else {
+        navbar.style.visibility = "hidden"
+      }
+    }
+  </script>
+
+  <!-- <% for(var j=0; j<photos.length; j++) { %>
+      <a id="link-prev-<%= photos[j].section %>" href="#<%= photos[j].section %>" style="display: block; position: absolute; top: 85%; left: <%=j*6 %>%;">
+      <div class="prev-link" width:100px>
+        <img src="https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[j].img_src %>">
+      </div>
+      </a>
+    <% } %> -->
+<!-- <button class="btn btn-success btn-lg mrb50" id="dynamic">Launch Gallery</button> -->
+<!-- <input type="image" src="static/photos/sections/marcel.jpg" width = 100 height = 100 id="dynamic" /> -->
+<div id="fullpage">
+<% for(var i=0; i<photos.length; i++) { %>
+  <%if (i == 0) { %>
+
+  <section id="welcome" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/img-50.jpg) center center / cover no-repeat;">
+    <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
+    <h1>Welcome to Chez Marcel.</h1>
+    <h3>(Happy Birthday Kira)</h3>
+    <a class="scroll-teaser" id="link-<%= photos[0].section %>"><span></span>Scroll</a>
+  </section>
+  <% } %>
+
+  <section id="<%= photos[i].section %>" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[i].img_src %>) center center / cover no-repeat;">
+    <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
+    <h1><%= photos[i].section %></h1>
+    <!-- <a><span></span></a> -->
+    <%if (i+1 === photos.length) { %>
+      <a><span></span>Back to Top</a>
+      <%}%>
+  </section>
+<% } %>
+<script>
+let anchors = ['Welcome']
+<% for (i=0; i< photos.length; i++) { %>
+  anchors.push('<%= photos[i].section %>')
+<% } %>
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		//Navigation
+		menu: '#menu',
+		lockAnchors: true,
+    anchors: anchors,
+		navigation: true,
+		navigationPosition: 'right',
+		navigationTooltips: anchors,
+		showActiveTooltip: false,
+		slidesNavigation: false,
+		slidesNavPosition: 'bottom',
+
+
+		//Scrolling
+		css3: true,
+		scrollingSpeed: 700,
+		autoScrolling: true,
+		fitToSection: true,
+		fitToSectionDelay: 1000,
+		scrollBar: false,
+		easing: 'easeInOutCubic',
+		easingcss3: 'ease',
+		loopBottom: false,
+		loopTop: false,
+		loopHorizontal: true,
+		continuousVertical: true,
+		continuousHorizontal: false,
+		scrollHorizontally: false,
+		interlockedSlides: false,
+		dragAndMove: true,
+		offsetSections: false,
+		resetSliders: false,
+		fadingEffect: false,
+		normalScrollElements: '#element1, .element2',
+		scrollOverflow: false,
+		scrollOverflowReset: false,
+		scrollOverflowOptions: null,
+		touchSensitivity: 15,
+		normalScrollElementTouchThreshold: 5,
+		bigSectionsDestination: null,
+
+		//Accessibility
+		keyboardScrolling: true,
+		animateAnchor: true,
+		recordHistory: true,
+
+		//Design
+		controlArrows: true,
+		verticalCentered: true,
+		sectionsColor : ['#ccc', '#fff'],
+		paddingTop: '3em',
+		paddingBottom: '10px',
+		fixedElements: '#header, .footer',
+		responsiveWidth: 0,
+		responsiveHeight: 0,
+		responsiveSlides: false,
+		parallax: false,
+		parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+
+		//Custom selectors
+		sectionSelector: '.section',
+		slideSelector: '.slide',
+
+		lazyLoading: true,
+
+		//events
+		onLeave: function(index, nextIndex, direction){},
+    afterLoad: function(anchorLink, index){},
+		afterRender: function(){},
+		afterResize: function(){},
+		afterResponsive: function(isResponsive){},
+		afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+	});
+});
+
+var photoarray = []
+<% for(var i=0; i<photos.length; i++) { %>
+  var photoarray_element = []
+  var members = <%- JSON.stringify(photos[i].members) %>
+var k =0
+
+for (var k=0; k<members.length; k++){
+      var record = {
+        "src": members[k].src,
+        "thumb": members[k].thumb,
+        "subHtml": members[k].caption,
+        'html': members[k].html
+      }
+      // photoarray_element.push(record)
+      photoarray_element.push(members[k].lg_entry)
+    }
+photoarray.push(photoarray_element)
+
+    // $('#<%- photos[i].section %>').on('click', function() {
+    $("[id='<%- photos[i].section %>']").on('click', function() {
+      $(this).lightGallery({
+          dynamic: true,
+          dynamicEl: photoarray[<%- i %>]
+        })
+      })
+<% } %>
+</script>
+
+
+
+</body>
