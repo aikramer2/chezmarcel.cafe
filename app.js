@@ -143,8 +143,8 @@ app.get('/', function(request, response){
     })
     //album_sections.map((elem)=>{console.log(typeof(elem))})
     Promise.all(album_sections).then(function(data){
-       response.render('albums-version-3', {photos: data})
-       //response.render('albums-with-previews', {photos: data})
+       //response.render('albums-version-3', {photos: data})
+       response.render('albums-with-previews', {photos: data})
      })
 
   })

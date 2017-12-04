@@ -77,7 +77,7 @@
 
                 $('#lg-share-pinterest').attr('href', 'http://www.pinterest.com/pin/create/button/?url=' + (encodeURIComponent(_this.getSahreProps(index, 'pinterestShareUrl') || window.location.href)) + '&media=' + encodeURIComponent(_this.getSahreProps(index, 'src')) + '&description=' + _this.getSahreProps(index, 'pinterestText'));
 
-                $('#lg-share-email').attr('href', 'mailto:?subject=Message from Chez Marcel;body=Marcel wants you to check this photo out! ' + (encodeURIComponent(_this.getSahreProps(index, 'emailShareUrl') || window.location.href)));
+                $('#lg-share-email').attr('href', 'mailto:?subject=Message from Chez Marcel&body=Marcel wants you to check this photo out! ' + (encodeURIComponent(_this.getSahreProps(index, 'emailShareUrl') || window.location.href)));
 
             }, 100);
         });
