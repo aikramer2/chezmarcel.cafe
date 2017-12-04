@@ -190,6 +190,7 @@ section .nav-toggler span {
   <script src="static/js/lg-fullscreen.js"></script>
   <script src="static/js/lg-video.js"></script>
   <script src="static/js/lg-share.js"></script>
+  <script src="static/js/lg-hash.js"></script>
   <script>
 
     toggle_nav = function(){
@@ -215,7 +216,7 @@ section .nav-toggler span {
 <% for(var i=0; i<photos.length; i++) { %>
   <%if (i == 0) { %>
 
-  <section id="welcome" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/img-50.jpg) center center / cover no-repeat;">
+  <section id="welcome-section" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/img-50.jpg) center center / cover no-repeat;">
     <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
     <h1>Welcome to Chez Marcel.</h1>
     <h3>(Happy Birthday Kira)</h3>
@@ -223,7 +224,7 @@ section .nav-toggler span {
   </section>
   <% } %>
 
-  <section id="<%= photos[i].section %>" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[i].img_src %>) center center / cover no-repeat;">
+  <section id="<%= photos[i].section %>-section" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[i].img_src %>) center center / cover no-repeat;">
     <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
     <h1><%= photos[i].section %></h1>
     <!-- <a><span></span></a> -->
@@ -333,7 +334,7 @@ for (var k=0; k<members.length; k++){
 photoarray.push(photoarray_element)
 
     // $('#<%- photos[i].section %>').on('click', function() {
-    $("[id='<%- photos[i].section %>']").on('click', function() {
+    $("[id='<%- photos[i].section %>-section']").on('click', function() {
       $(this).lightGallery({
           dynamic: true,
           dynamicEl: photoarray[<%- i %>]

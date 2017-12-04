@@ -157,7 +157,7 @@ section a span {
 <script>
 let anchors = []
 <% for (i=0; i< photos.length; i++) { %>
-  anchors.push('<%= photos[i].section %>')
+  anchors.push('<%= photos[i].section %>-section')
 <% } %>
 $(document).ready(function() {
 	$('#fullpage').fullpage({
