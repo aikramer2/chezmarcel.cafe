@@ -47,6 +47,7 @@
 
         return this;
     };
+    
 
     Share.prototype.init = function() {
         var _this = this;

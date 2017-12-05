@@ -164,6 +164,7 @@ section .nav-toggler span {
 }
 
 
+
 </style>
 <link rel="stylesheet" type="text/css" href="static/css/jquery.fullpage.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -178,10 +179,6 @@ section .nav-toggler span {
 
 <script type="text/javascript" src="static/js/jquery.fullpage.js"></script>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script> -->
-  <!-- <script src="static/js/lightgallery.min.js"></script> -->
-  <!-- <script src="static/js/lg-video.min.js"></script> -->
   <script src="static/js/lightgallery.js"></script>
   <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
@@ -203,33 +200,22 @@ section .nav-toggler span {
     }
   </script>
 
-  <!-- <% for(var j=0; j<photos.length; j++) { %>
-      <a id="link-prev-<%= photos[j].section %>" href="#<%= photos[j].section %>" style="display: block; position: absolute; top: 85%; left: <%=j*6 %>%;">
-      <div class="prev-link" width:100px>
-        <img src="https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[j].img_src %>">
-      </div>
-      </a>
-    <% } %> -->
-<!-- <button class="btn btn-success btn-lg mrb50" id="dynamic">Launch Gallery</button> -->
-<!-- <input type="image" src="static/photos/sections/marcel.jpg" width = 100 height = 100 id="dynamic" /> -->
 <div id="fullpage">
 <% for(var i=0; i<photos.length; i++) { %>
   <%if (i == 0) { %>
 
   <section id="welcome-section" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/img-50.jpg) center center / cover no-repeat;">
-    <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
+
     <h1>Welcome to Chez Marcel.</h1>
     <h3>(Happy Birthday Kira)</h3>
     <a class="scroll-teaser" id="link-<%= photos[0].section %>"><span></span>Scroll</a>
   </section>
   <% } %>
-
   <section id="<%= photos[i].section %>-section" class="section" style="background: url(https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/<%= photos[i].img_src %>) center center / cover no-repeat;">
-    <!-- <a class="nav-toggler" onclick="toggle_nav()"><span></span></a> -->
     <h1><%= photos[i].section %></h1>
-    <!-- <a><span></span></a> -->
     <%if (i+1 === photos.length) { %>
       <a><span></span>Back to Top</a>
+
       <%}%>
   </section>
 <% } %>
@@ -242,7 +228,7 @@ $(document).ready(function() {
 	$('#fullpage').fullpage({
 		//Navigation
 		menu: '#menu',
-		lockAnchors: true,
+		lockAnchors: false,
     anchors: anchors,
 		navigation: true,
 		navigationPosition: 'right',
@@ -336,13 +322,162 @@ photoarray.push(photoarray_element)
     // $('#<%- photos[i].section %>').on('click', function() {
     $("[id='<%- photos[i].section %>-section']").on('click', function() {
       $(this).lightGallery({
+          galleryId: encodeURIComponent("<%- photos[i].section %>"),
           dynamic: true,
           dynamicEl: photoarray[<%- i %>]
         })
       })
 <% } %>
+
 </script>
+</div>
+<!-- End of Full Page Elements -->
+
+
+<div id="song-player">
+  <a>
+      <span class="prev-button"><ul class="lg-dropdown" style="position: absolute;"><i id="prev-button" class="fa fa-step-backward"></i><span></span></ul></span>
+  </a>
+  <a>
+      <span class="play-button"><ul class="lg-dropdown" style="position: absolute;"><i id="play-button" class="fa fa-play"></i><span></span></ul></span>
+  </a>
+  <a>
+      <span class="next-button"><ul class="lg-dropdown" style="position: absolute;"><i id="next-button" class="fa fa-step-forward"></i><span></span></ul></span>
+  </a>
+    <span class="now-playing" id='now-playing'></span>
+</div>
+
+<script>
+
+class PlayList {
+  constructor(playbutton, nowplaying, tracklist) {
+    this.nowplaying = nowplaying
+    this.playbutton = playbutton
+    this.trackLabels = tracklist
+    this.tracklist = Object.keys(this.trackLabels);
+    this.currentTrackIndex = 0
+    this.currentTime = 0
+    this.audio = new Audio(this.tracklist[this.currentTrackIndex])
+    this.audio.player = this
+    this.audio.onended = function(){
+      this.player.next()
+      this.player.play()
+    }
+  }
+
+  updateNowPlaying(){
+    this.nowplaying.innerHTML = this.trackLabels[this.tracklist[this.currentTrackIndex]]
+  }
+
+  play(){
+    this.playbutton.classList.remove('fa-play')
+    this.playbutton.classList.add('fa-pause')
+    this.updateNowPlaying()
+    this.audio.play();
+  }
+
+
+  pause(){
+    this.playbutton.classList.remove('fa-pause')
+    this.playbutton.classList.add('fa-play')
+    this.audio.pause();
+  }
+
+  toggle(){
+    if (this.audio.paused){
+      this.play()
+    } else {
+      this.pause()
+    }
+  }
+
+
+  next(){
+    let was_playing = !this.audio.paused;
+    if (was_playing){
+      this.pause()
+    }
+    if (this.currentTrackIndex == this.tracklist.length - 1){
+      this.currentTrackIndex = 0
+      console.log("setting current track index to 0")
+    } else {
+      this.currentTrackIndex = this.currentTrackIndex + 1
+      console.log("setting current track index to " + this.currentTrackIndex )
+    }
+    this.audio = new Audio(this.tracklist[this.currentTrackIndex])
+    this.audio.player = this
+    this.audio.onended = function(){
+      this.player.next()
+    }
+    // if (was_playing){
+    //   this.play()
+    // }
+    this.play()
+    // this.updateNowPlaying()
+  }
+  previous(){
+    if (!this.audio.paused){this.pause()}
+    if (this.audio.currentTime == 0){
+      if (this.currentTrackIndex == 0){
+        this.currentTrackIndex = this.tracklist.length - 1
+      } else {
+        this.currentTrackIndex = this.currentTrackIndex - 1
+      }
+      this.audio = new Audio(this.tracklist[this.currentTrackIndex])
+    } else {
+      this.audio.currentTime = 0
+    }
+    this.updateNowPlaying()
+  }
+}
+
+let tracks_info = {
+  "west-coast.mp3": "West Coast.",
+  "be-our-guest.mp3":"Be Our Guest.",
+  "misty-mountains.mp3": "Misty Mountains.",
+  "we-know-the-way.mp3": "We Know the Way.",
+  "americas-test-kitchen.mp3": "Americas Test Kitchen.",
+  "eh-gia.mp3":"Eh...gia",
+  "frozen-in-summer.mp3": "Frozen in Summer.",
+  "apple-bottoms.mp3": "Apple Bottom Jeans.",
+  "sherlock.mp3": "Sherlock",
+  "avatar.mp3": "Avatar Theme Song",
+  "fascinating-r.mp3": "Fasctinating Rhythm",
+  "frasier.mp3": "Frasier",
+  "harry-potter.mp3": "Hedwig's Theme",
+  "hamilton-1.mp3": "Alexander Hamilton",
+  "curb.mp3": "Curb Your Enthusiam",
+  "frasier-song.mp3": "Frasier",
+  "typewriter.mp3": "Typewriter",
+  "egg-song.mp3": "Eggs"
+}
+
+let tracks = {}
+let s3_audio_prefix = "https://s3-us-west-1.amazonaws.com/my-data-repo/audio/"
+for (var key in tracks_info) {
+    if (tracks_info.hasOwnProperty(key)) {
+        tracks[s3_audio_prefix + key] = tracks_info[key]
+    }
+}
 
 
 
+let now_playing = document.getElementById("now-playing")
+let play_button = document.getElementById("play-button")
+let myPlayList = new PlayList(play_button, now_playing, tracks)
+
+$('#play-button').on('click', function(){
+  myPlayList.toggle()
+})
+
+$('#next-button').on('click', function(){
+  myPlayList.next()
+})
+
+$('#prev-button').on('click', function(){
+  myPlayList.previous()
+})
+
+</script>
+I take no credit for the audio on this site. Each song belongs to its registered publisher, and I take no credit for the audio.
 </body>
