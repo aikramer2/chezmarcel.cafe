@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
 <style>
 * {
   margin: 0;
@@ -169,25 +170,16 @@ section .nav-toggler span {
 <link rel="stylesheet" type="text/css" href="static/css/jquery.fullpage.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
 <script src="static/js/jquery.easings.min.js"></script>
-
-
-<!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
 <script type="text/javascript" src="static/js/scrolloverflow.min.js"></script>
-
 <script type="text/javascript" src="static/js/jquery.fullpage.js"></script>
-
-  <script src="static/js/lightgallery.js"></script>
-  <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-  <!-- <script src="static/js/lightgallery-all.min.js"></script> -->
-  <script src="static/js/lg-thumbnail.js"></script>
-  <script src="static/js/lg-fullscreen.js"></script>
-  <script src="static/js/lg-video.js"></script>
-  <!-- <script src="static/js/lg-share.js"></script> -->
-  <script src="static/js/lg-hash.js"></script>
+<script src="static/js/lightgallery.js"></script>
+<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+<script src="static/js/lg-thumbnail.js"></script>
+<script src="static/js/lg-fullscreen.js"></script>
+<script src="static/js/lg-video.js"></script>
+<script src="static/js/lg-hash.js"></script>
   <script>
 
     toggle_nav = function(){
@@ -314,16 +306,14 @@ for (var k=0; k<members.length; k++){
         "subHtml": members[k].caption,
         'html': members[k].html
       }
-      // photoarray_element.push(record)
       photoarray_element.push(members[k].lg_entry)
     }
 photoarray.push(photoarray_element)
-
-    // $('#<%- photos[i].section %>').on('click', function() {
     $("[id='<%- photos[i].section %>-section']").on('click', function() {
       $(this).lightGallery({
           galleryId: encodeURIComponent("<%- photos[i].section %>"),
           dynamic: true,
+          height: '80%',
           dynamicEl: photoarray[<%- i %>]
         })
       })
@@ -332,7 +322,6 @@ photoarray.push(photoarray_element)
 </script>
 </div>
 <!-- End of Full Page Elements -->
-
 
 <div id="song-player">
   <a>
@@ -376,7 +365,6 @@ class PlayList {
     this.audio.play();
   }
 
-
   pause(){
     this.playbutton.classList.remove('fa-pause')
     this.playbutton.classList.add('fa-play')
@@ -393,8 +381,8 @@ class PlayList {
 
 
   next(){
-    let was_playing = !this.audio.paused;
-    if (was_playing){
+
+    if (!this.audio.paused){
       this.pause()
     }
     if (this.currentTrackIndex == this.tracklist.length - 1){
@@ -409,11 +397,7 @@ class PlayList {
     this.audio.onended = function(){
       this.player.next()
     }
-    // if (was_playing){
-    //   this.play()
-    // }
     this.play()
-    // this.updateNowPlaying()
   }
   previous(){
     if (!this.audio.paused){this.pause()}
@@ -437,19 +421,19 @@ let tracks_info = {
   "misty-mountains.mp3": "Misty Mountains.",
   "we-know-the-way.mp3": "We Know the Way.",
   "americas-test-kitchen.mp3": "Americas Test Kitchen.",
-  "eh-gia.mp3":"Eh...gia",
+  "eh-gia.mp3":"Eh...gia.",
   "frozen-in-summer.mp3": "Frozen in Summer.",
   "apple-bottoms.mp3": "Apple Bottom Jeans.",
-  "sherlock.mp3": "Sherlock",
-  "avatar.mp3": "Avatar Theme Song",
-  "fascinating-r.mp3": "Fasctinating Rhythm",
-  "frasier.mp3": "Frasier",
-  "harry-potter.mp3": "Hedwig's Theme",
-  "hamilton-1.mp3": "Alexander Hamilton",
-  "curb.mp3": "Curb Your Enthusiam",
-  "frasier-song.mp3": "Frasier",
-  "typewriter.mp3": "Typewriter",
-  "egg-song.mp3": "Eggs"
+  "sherlock.mp3": "Sherlock.",
+  "avatar.mp3": "Avatar Theme Song.",
+  "fascinating-r.mp3": "Fasctinating Rhythm.",
+  "frasier.mp3": "Frasier.",
+  "harry-potter.mp3": "Hedwig's Theme.",
+  "hamilton-1.mp3": "Alexander Hamilton.",
+  "curb.mp3": "Curb Your Enthusiam.",
+  "frasier-song.mp3": "Frasier.",
+  "typewriter.mp3": "Typewriter.",
+  "egg-song.mp3": "Eggs."
 }
 
 let tracks = {}
@@ -459,8 +443,6 @@ for (var key in tracks_info) {
         tracks[s3_audio_prefix + key] = tracks_info[key]
     }
 }
-
-
 
 let now_playing = document.getElementById("now-playing")
 let play_button = document.getElementById("play-button")
@@ -479,5 +461,5 @@ $('#prev-button').on('click', function(){
 })
 
 </script>
-I take no credit for the audio on this site. Each song belongs to its registered publisher, and I take no credit for the audio.
+<span style='display:none'>I take no credit for the audio on this site. Each song belongs to its registered publisher, and I take no credit for the audio.</span>
 </body>

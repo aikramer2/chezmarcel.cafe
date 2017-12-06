@@ -42,7 +42,10 @@ function build_member_light_gallery_entry(photo_entry){
     return {
       "src": s3_prefix + photo_entry["image_id"],
       "thumb": s3_prefix + photo_entry["image_id"],
-      "subHtml": photo_entry["caption"]}
+      // "subHtml": "<input type='text' value='"+photo_entry["caption"]+"'/>"
+      // "subHtml": photo_entry["caption"]
+      "subHtml": '<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>'
+    }
     } else {
       return {
         "thumb": "static/img/video-play.png",
