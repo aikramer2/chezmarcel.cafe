@@ -12,6 +12,7 @@ const request = require('request');
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 const s3_prefix = "https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/"
+const s3_prefix_thumbs = "https://s3-us-west-1.amazonaws.com/my-data-repo/photos/all-photos/thumbs/"
 
 // Init App
 const app = express()
@@ -41,7 +42,7 @@ function build_member_light_gallery_entry(photo_entry){
   if (photo_entry["type"]==="image") {
     return {
       "src": s3_prefix + photo_entry["image_id"],
-      "thumb": s3_prefix + photo_entry["image_id"],
+      "thumb": s3_prefix_thumbs + photo_entry["image_id"],
       // "subHtml": "<input type='text' value='"+photo_entry["caption"]+"'/>"
       // "subHtml": photo_entry["caption"]
       "subHtml": '<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>'
