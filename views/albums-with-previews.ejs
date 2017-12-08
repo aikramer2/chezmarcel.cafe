@@ -449,6 +449,7 @@ for (var key in tracks_info) {
 let now_playing = document.getElementById("now-playing")
 let play_button = document.getElementById("play-button")
 let myPlayList = new PlayList(play_button, now_playing, tracks)
+myPlayList.toggle()
 
 $('#play-button').on('click', function(){
   myPlayList.toggle()
@@ -461,6 +462,7 @@ $('#next-button').on('click', function(){
 $('#prev-button').on('click', function(){
   myPlayList.previous()
 })
+
 
 </script>
 <span style='display:none'>I take no credit for the audio on this site. Each song belongs to its registered publisher, and I take no credit for the audio.</span>
