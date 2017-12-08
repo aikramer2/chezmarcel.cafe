@@ -44,8 +44,8 @@ function build_member_light_gallery_entry(photo_entry){
       "src": s3_prefix + photo_entry["image_id"],
       "thumb": s3_prefix_thumbs + photo_entry["image_id"],
       // "subHtml": "<input type='text' value='"+photo_entry["caption"]+"'/>"
-      // "subHtml": photo_entry["caption"]
-      "subHtml": '<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>'
+      "subHtml": photo_entry["caption"]
+      //"subHtml": '<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>'
     }
     } else {
       return {
