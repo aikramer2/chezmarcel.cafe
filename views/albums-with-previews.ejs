@@ -449,7 +449,6 @@ for (var key in tracks_info) {
 let now_playing = document.getElementById("now-playing")
 let play_button = document.getElementById("play-button")
 let myPlayList = new PlayList(play_button, now_playing, tracks)
-myPlayList.toggle()
 
 $('#play-button').on('click', function(){
   myPlayList.toggle()
